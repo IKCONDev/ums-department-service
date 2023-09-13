@@ -25,7 +25,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	 */
 	@ExceptionHandler(EntityNotFoundException.class)
 	public ResponseEntity<String> handleEntityNotFoundException(EntityNotFoundException entityNotFoundException) {
-		log.info("GlobalExceptionHandler.handleEntityNotFoundException() ENTERED" + entityNotFoundException.getMessage());
+		log.info("DEPARTMENT SERVICE : GlobalExceptionHandler.handleEntityNotFoundException() ENTERED" + entityNotFoundException.getMessage());
 		return new ResponseEntity<String>("Entity Object is NUll.", HttpStatus.BAD_REQUEST);
 	}
 	
@@ -37,7 +37,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	 */
 	@ExceptionHandler(EmptyInputException.class)
 	public ResponseEntity<String> handleEmptyInput(EmptyInputException emptyInputException) {
-		log.info("GlobalExceptionHandler.handleEmptyInput() ENTERED" + emptyInputException.getMessage());
+		log.info("DEPARTMENT SERVICE : GlobalExceptionHandler.handleEmptyInput() ENTERED" + emptyInputException.getMessage());
 		return new ResponseEntity<String>("Input field is empty. Please look into it.", HttpStatus.BAD_REQUEST);
 	}
 
@@ -50,7 +50,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	 */
 	@ExceptionHandler(NoSuchElementException.class)
 	public ResponseEntity<String> handleNoSuchElementException(NoSuchElementException noSuchElementException) {
-		log.info("GlobalExceptionHandler.handleNoSuchElementException() ENTERED" + noSuchElementException.getMessage());
+		log.info("DEPARTMENT SERVICE : GlobalExceptionHandler.handleNoSuchElementException() ENTERED" + noSuchElementException.getMessage());
 		return new ResponseEntity<String>("No Value is Present in DB.", HttpStatus.NOT_FOUND);
 	}
 
@@ -61,8 +61,8 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	 */
 	@ExceptionHandler(BusinessException.class)
 	public ResponseEntity<String> handleBusinessException(BusinessException businessException) {
-		log.info("GlobalExceptionHandler.handleBusinessException() ENTERED");
-		log.info("Business Exception Occurred." + businessException.getMessage());
+		log.info("DEPARTMENT SERVICE : GlobalExceptionHandler.handleBusinessException() ENTERED");
+		log.info("DEPARTMENT SERVICE : Business Exception Occurred." + businessException.getMessage());
 		return new ResponseEntity<String>("Business Exception.", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
@@ -73,15 +73,15 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	 */
 	@ExceptionHandler(ControllerException.class)
 	public ResponseEntity<String> handleControllerException(ControllerException controllerException) {
-		log.info("GlobalExceptionHandler.handleControllerException() ENTERED");
-		log.info("Controller Exception Occurred" + controllerException.getMessage());
+		log.info("DEPARTMENT SERVICE : GlobalExceptionHandler.handleControllerException() ENTERED");
+		log.info("DEPARTMENT SERVICE : Controller Exception Occurred" + controllerException.getMessage());
 		return new ResponseEntity<String>("Business Exception.", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@Override
 	protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
-		log.info("GlobalExceptionHandler.handleEmptyInput() ENTERED" + ex.getMessage());
+		log.info("DEPARTMENT SERVICE : GlobalExceptionHandler.handleEmptyInput() ENTERED" + ex.getMessage());
 		return new ResponseEntity<Object>("Please change your http method type.", HttpStatus.NOT_FOUND);
 	}
 
