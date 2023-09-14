@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ import com.ikn.ums.department.VO.DepartmentListVO;
 import com.ikn.ums.department.entity.Department;
 import com.ikn.ums.department.exception.ControllerException;
 import com.ikn.ums.department.exception.EmptyInputException;
+import com.ikn.ums.department.exception.EntityNotFoundException;
 import com.ikn.ums.department.exception.ErrorCodeMessages;
 import com.ikn.ums.department.service.impl.DepartmentServiceImpl;
 
@@ -62,6 +64,17 @@ public class DepartmentController {
 		return new ResponseEntity<>(departmentListVO, HttpStatus.OK);
 	}
 
+	@PutMapping("/update")
+	public ResponseEntity<Department> updateDepartment(@RequestBody Department department) {
+		log.info("DepartmentController.updateDepartment() ENTERED ");
+		Department updatedDeparment = new Department();
+		if (department != null)
+			throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE,
+					ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
+		updatedDeparment = departmentService.saveDepartment(department);
+		return new ResponseEntity<Department> (updatedDeparment , HttpStatus.CREATED);
+	}
+	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> deleteDepartment(@PathVariable("id") Long departmentId) {
 		log.info("DepartmentController.deleteDepartment() ENTERED : departmentId : " + departmentId);
