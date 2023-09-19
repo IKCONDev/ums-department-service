@@ -18,6 +18,7 @@ import com.ikn.ums.department.VO.DepartmentListVO;
 import com.ikn.ums.department.entity.Department;
 import com.ikn.ums.department.exception.ControllerException;
 import com.ikn.ums.department.exception.EmptyInputException;
+import com.ikn.ums.department.exception.EmptyListException;
 import com.ikn.ums.department.exception.EntityNotFoundException;
 import com.ikn.ums.department.exception.ErrorCodeMessages;
 import com.ikn.ums.department.service.impl.DepartmentServiceImpl;
@@ -34,34 +35,21 @@ public class DepartmentController {
 
 	@PostMapping("/")
 	public ResponseEntity<?> saveDepartment(@RequestBody Department department) {
-		ResponseEntity<?> reEntity = null;
-		log.info("DepartmentController.saveDepartment() Entered" + department.getDepartmentId());
-		try {
-			Department dbDepartment = departmentService.saveDepartment(department);
-			reEntity = new ResponseEntity<Department>(dbDepartment, HttpStatus.CREATED);
-			log.info("DepartmentController.saveDepartment() Exited successfully");
-			return reEntity;
-		} catch (Exception e) {
-			ControllerException umsCE = new ControllerException("<error code>", e.getStackTrace().toString());
-			reEntity = new ResponseEntity<ControllerException>(umsCE, HttpStatus.INTERNAL_SERVER_ERROR);
-			log.info("DepartmentController.saveDepartment() Exited with Controller exception " + umsCE);
-			return reEntity;
+		log.info("DepartmentController.saveDepartment() Entered : department : " + department);
+		if (department == null) {
+			log.info("DepartmentController.saveDepartment() : department Object is NULL !");
+			throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE,
+					ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
 		}
-	}
-
-	@GetMapping("/{id}")
-	public Department findDepartmentById(@PathVariable("id") Long departmentId) {
-		log.info("DepartmentController.findDepartmentById() Entered :: departmentId :: " + departmentId);
-		return departmentService.findDepartmentById(departmentId);
-	}
-
-	@GetMapping("/get-all")
-	public ResponseEntity<?> getAllDepartments() {
-		log.info("DepartmentController.getAllDepartments() ENTERED");
-		List<Department> departmentDbList = departmentService.getAllDepartments();
-		DepartmentListVO departmentListVO = new DepartmentListVO();
-		departmentListVO.setDepartment(departmentDbList);
-		return new ResponseEntity<>(departmentListVO, HttpStatus.OK);
+		try {
+			Department savedDepartment = departmentService.saveDepartment(department);
+			log.info("DepartmentController.saveDepartmente() : Post Employee method calling .... " + savedDepartment);
+			return new ResponseEntity<Department>(savedDepartment, HttpStatus.CREATED);
+		} catch (Exception e) {
+			log.info("DepartmentController.saveDepartment() : Exception Occured !" + e.fillInStackTrace());
+			throw new ControllerException(ErrorCodeMessages.DEPT_SAVE_SUCCESS_CODE,
+					ErrorCodeMessages.DEPT_SAVE_SUCCESS_MSG);
+		}
 	}
 
 	@PutMapping("/update")
@@ -71,18 +59,67 @@ public class DepartmentController {
 		if (department != null)
 			throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE,
 					ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
-		updatedDeparment = departmentService.saveDepartment(department);
-		return new ResponseEntity<Department> (updatedDeparment , HttpStatus.CREATED);
+		try {
+			updatedDeparment = departmentService.saveDepartment(department);
+			return new ResponseEntity<Department>(updatedDeparment, HttpStatus.CREATED);
+		} catch (Exception e) {
+			log.info("DepartmentController.updateEmployee() : Exception Occured !" + e.fillInStackTrace());
+			throw new ControllerException(ErrorCodeMessages.ERR_DEPT_UPDATE_UNSUCCESS_CODE,
+					ErrorCodeMessages.ERR_DEPT_UPDATE_UNSUCCESS_MSG);
+		}
 	}
-	
+
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> deleteDepartment(@PathVariable("id") Long departmentId) {
 		log.info("DepartmentController.deleteDepartment() ENTERED : departmentId : " + departmentId);
 		if (departmentId <= 0)
 			throw new EmptyInputException(ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_CODE,
 					ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_MSG);
-		departmentService.deleteDepartment(departmentId);
-		return ResponseEntity.ok("Department deleted successfully");
+		try {
+			departmentService.deleteDepartment(departmentId);
+			return ResponseEntity.ok("Department deleted successfully");
+		} catch (Exception e) {
+			log.info("DepartmentController.deleteDepartment() : Exception Occured while deleting Department !"
+					+ e.fillInStackTrace());
+			throw new ControllerException(ErrorCodeMessages.ERR_DEPT_DELETE_UNSUCCESS_CODE,
+					ErrorCodeMessages.ERR_DEPT_DELETE_UNSUCCESS_CODE);
+		}
+	}
+
+	@GetMapping("/{id}")
+	public Department findDepartmentById(@PathVariable("id") Long departmentId) {
+		log.info("DepartmentController.findDepartmentById() Entered :: departmentId :: " + departmentId);
+
+		if (departmentId <= 0)
+			throw new EmptyInputException(ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_CODE,
+					ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_MSG);
+		try {
+			return departmentService.findDepartmentById(departmentId);
+		} catch (Exception e) {
+			log.info("DepartmentController.findDepartmentById() : Exception Occured while getting Department Details !"
+					+ e.fillInStackTrace());
+			throw new ControllerException(ErrorCodeMessages.ERR_DEPT_DETAILS_GET_UNSUCESS_CODE,
+					ErrorCodeMessages.ERR_DEPT_DETAILS_GET_UNSUCESS_MSG);
+		}
+	}
+
+	@GetMapping("/get-all")
+	public ResponseEntity<?> getAllDepartments() {
+		log.info("DepartmentController.getAllDepartments() ENTERED");
+		List<Department> departmentDbList = departmentService.getAllDepartments();
+		DepartmentListVO departmentListVO = new DepartmentListVO();
+		if ( departmentDbList.isEmpty() )
+			throw new EmptyListException(ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_CODE,
+					ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_MSG);
+		try {
+			departmentListVO.setDepartment(departmentDbList);
+			return new ResponseEntity<>(departmentListVO, HttpStatus.OK);
+		}catch (Exception e) {
+			log.info("DepartmentController.getAllDepartments() : Exception Occured while getting All Department Details !"
+					+ e.fillInStackTrace());
+			throw new ControllerException(ErrorCodeMessages.ERR_DEPT_RETRIEVE_ALL_UNSUCESS_CODE,
+					ErrorCodeMessages.ERR_DEPT_RETRIEVE_ALL_UNSUCESS_MSG);
+		}
 	}
 
 }
