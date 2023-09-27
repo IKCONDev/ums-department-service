@@ -38,7 +38,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 	public Department findDepartmentById(Long departmentId) {
 		log.info("DepartmentService.findDepartmentById() Entered : departmentId : " + departmentId);
 		Department retrievedDepartment = null;
-		if (departmentId <= 1) {
+		if (departmentId <= 0) {
 			log.info("DepartmentService.findDepartmentById() in departmentId id is <= 0.");
 			throw new EmptyInputException(ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_CODE,
 					ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_MSG);
