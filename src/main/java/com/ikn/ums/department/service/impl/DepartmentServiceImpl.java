@@ -1,5 +1,6 @@
 package com.ikn.ums.department.service.impl;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,13 @@ public class DepartmentServiceImpl implements DepartmentService {
 		if (department == null) {
 			throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE,
 					ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
+		}
+		//set current date time for newly inserted record
+		if(department.getDepartmentId() < 1) {
+			department.setCreatedDateTime(LocalDateTime.now());
+		}else {
+			//set modified date time for existing  record
+			department.setModifiedDateTime(LocalDateTime.now());
 		}
 		savedDepartment = departmentRepository.save(department);
 		return savedDepartment;

@@ -1,5 +1,7 @@
 package com.ikn.ums.department.entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,5 +25,11 @@ public class Department {
     private String departmentName;
     private String departmentAddress;
     private String departmentCode;
-    
+    private String departmentHead;
+    private LocalDateTime createdDateTime;
+    private LocalDateTime modifiedDateTime;
+    private String createdBy;
+    private String modifiedBy;
+    private String createdByEmailId;
+  
 }

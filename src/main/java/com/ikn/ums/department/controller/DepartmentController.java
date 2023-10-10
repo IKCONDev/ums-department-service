@@ -33,7 +33,7 @@ public class DepartmentController {
 	@Autowired
 	private DepartmentServiceImpl departmentService;
 
-	@PostMapping("/")
+	@PostMapping("/save")
 	public ResponseEntity<?> saveDepartment(@RequestBody Department department) {
 		log.info("DepartmentController.saveDepartment() Entered : department : " + department);
 		if (department == null) {
@@ -70,14 +70,16 @@ public class DepartmentController {
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<String> deleteDepartment(@PathVariable("id") Long departmentId) {
+	public ResponseEntity<?> deleteDepartment(@PathVariable("id") Long departmentId) {
+		boolean isDeleted= false;
 		log.info("DepartmentController.deleteDepartment() ENTERED : departmentId : " + departmentId);
 		if (departmentId <= 0)
 			throw new EmptyInputException(ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_CODE,
 					ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_MSG);
 		try {
 			departmentService.deleteDepartment(departmentId);
-			return ResponseEntity.ok("Department deleted successfully");
+			isDeleted = true;
+			return new ResponseEntity<>(isDeleted, HttpStatus.OK);
 		} catch (Exception e) {
 			log.info("DepartmentController.deleteDepartment() : Exception Occured while deleting Department !"
 					+ e.fillInStackTrace());
@@ -103,17 +105,17 @@ public class DepartmentController {
 		}
 	}
 
-	@GetMapping("/get-all")
+	@GetMapping("/all")
 	public ResponseEntity<?> getAllDepartments() {
 		log.info("DepartmentController.getAllDepartments() ENTERED");
 		List<Department> departmentDbList = departmentService.getAllDepartments();
-		DepartmentListVO departmentListVO = new DepartmentListVO();
+		//DepartmentListVO departmentListVO = new DepartmentListVO();
 		if ( departmentDbList.isEmpty() )
 			throw new EmptyListException(ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_CODE,
 					ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_MSG);
 		try {
-			departmentListVO.setDepartment(departmentDbList);
-			return new ResponseEntity<>(departmentListVO, HttpStatus.OK);
+			//departmentListVO.setDepartment(departmentDbList);
+			return new ResponseEntity<>(departmentDbList, HttpStatus.OK);
 		}catch (Exception e) {
 			log.info("DepartmentController.getAllDepartments() : Exception Occured while getting All Department Details !"
 					+ e.fillInStackTrace());
