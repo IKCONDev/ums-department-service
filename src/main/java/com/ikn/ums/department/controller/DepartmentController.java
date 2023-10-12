@@ -56,11 +56,11 @@ public class DepartmentController {
 	public ResponseEntity<Department> updateDepartment(@RequestBody Department department) {
 		log.info("DepartmentController.updateDepartment() ENTERED ");
 		Department updatedDeparment = new Department();
-		if (department != null)
+		if (department == null)
 			throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE,
 					ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
 		try {
-			updatedDeparment = departmentService.saveDepartment(department);
+			updatedDeparment = departmentService.updateDepartment(department);
 			return new ResponseEntity<Department>(updatedDeparment, HttpStatus.CREATED);
 		} catch (Exception e) {
 			log.info("DepartmentController.updateEmployee() : Exception Occured !" + e.fillInStackTrace());
@@ -96,6 +96,7 @@ public class DepartmentController {
 			throw new EmptyInputException(ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_CODE,
 					ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_MSG);
 		try {
+			System.out.println(departmentService.findDepartmentById(departmentId));
 			return departmentService.findDepartmentById(departmentId);
 		} catch (Exception e) {
 			log.info("DepartmentController.findDepartmentById() : Exception Occured while getting Department Details !"

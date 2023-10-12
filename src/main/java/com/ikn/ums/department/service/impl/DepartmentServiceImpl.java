@@ -32,12 +32,8 @@ public class DepartmentServiceImpl implements DepartmentService {
 					ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
 		}
 		//set current date time for newly inserted record
-		if(department.getDepartmentId() < 1) {
 			department.setCreatedDateTime(LocalDateTime.now());
-		}else {
-			//set modified date time for existing  record
-			department.setModifiedDateTime(LocalDateTime.now());
-		}
+		
 		savedDepartment = departmentRepository.save(department);
 		return savedDepartment;
 	}
@@ -78,6 +74,29 @@ public class DepartmentServiceImpl implements DepartmentService {
 			throw new EmptyInputException(ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_CODE,
 					ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_MSG);
 		departmentRepository.deleteById(departmentId);
+	}
+
+	@Override
+	public Department updateDepartment(Department department) {
+		Department updatedDepartment = null;
+		log.info("DepartmentService.updateDepartment() Entered");
+		if (department == null) {
+			throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE,
+					ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
+		}
+		Department dbDepartment = null;
+		if(department.getDepartmentId() != null) {
+			dbDepartment = departmentRepository.findByDepartmentId(department.getDepartmentId());
+			dbDepartment.setDepartmentName(department.getDepartmentName());
+			dbDepartment.setDepartmentCode(department.getDepartmentCode());
+			dbDepartment.setDepartmentAddress(department.getDepartmentAddress());
+			dbDepartment.setDepartmentHead(department.getDepartmentHead());
+			dbDepartment.setModifiedBy(department.getModifiedBy());
+			dbDepartment.setModifiedDateTime(LocalDateTime.now());
+		}
+		updatedDepartment = departmentRepository.save(dbDepartment);
+		return updatedDepartment;
+		
 	}
 
 }

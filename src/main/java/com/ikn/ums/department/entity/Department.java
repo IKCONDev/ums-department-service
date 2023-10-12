@@ -29,10 +29,22 @@ public class Department {
     private String departmentAddress;
     private String departmentCode;
     private String departmentHead;
-    private LocalDateTime createdDateTime;
-    private LocalDateTime modifiedDateTime;
-    private String createdBy;
-    private String modifiedBy;
-    private String createdByEmailId;
+    @Column(name = "createdDateTime")
+	private LocalDateTime createdDateTime;
+	
+	@Column(name = "modifiedDateTime")
+	private LocalDateTime modifiedDateTime;
+	
+	@Column(name = "createdBy")
+	private String createdBy;
+	
+	@Column(name = "modifiedBy")
+	private String modifiedBy;
+	
+	@Column(name = "createdByEmailId")
+	private String createdByEmailId;
+	
+	@Column(name = "modifiedByEmailId")
+	private String modifiedByEmailId;
   
 }
