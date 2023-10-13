@@ -3,6 +3,8 @@ package com.ikn.ums.department.service.impl;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -96,6 +98,20 @@ public class DepartmentServiceImpl implements DepartmentService {
 		}
 		updatedDepartment = departmentRepository.save(dbDepartment);
 		return updatedDepartment;
+		
+	}
+
+	@Transactional
+	@Override
+	public void deleteSelectedDepartmentsByIds(List<Long> ids) {
+		if(ids.size() < 1) {
+			throw new EmptyListException(ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_CODE, 
+					ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_MSG);
+		}
+		List<Department> departmentList = departmentRepository.findAllById(ids);
+		if(departmentList.size() > 0) {
+			departmentRepository.deleteAll(departmentList);
+		}
 		
 	}
 

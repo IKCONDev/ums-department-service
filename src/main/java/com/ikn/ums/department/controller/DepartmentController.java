@@ -124,5 +124,20 @@ public class DepartmentController {
 					ErrorCodeMessages.ERR_DEPT_RETRIEVE_ALL_UNSUCESS_MSG);
 		}
 	}
+	
+	@DeleteMapping("/delete/all/{ids}")
+	public ResponseEntity<?> deleteAllDepartmentsByIds(@PathVariable List<Long> ids){
+		if(ids == null || ids.size() == 0 || ids.equals((null))){
+			throw new EmptyInputException(ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_CODE, 
+					ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_MSG);
+		}
+		try {
+			departmentService.deleteSelectedDepartmentsByIds(ids);
+			return new ResponseEntity<>(true, HttpStatus.OK);
+		}catch (Exception e) {
+			throw new ControllerException(ErrorCodeMessages.ERR_DEPT_DELETE_UNSUCCESS_CODE,
+					ErrorCodeMessages.ERR_DEPT_DELETE_UNSUCCESS_MSG);
+		}
+	}
 
 }

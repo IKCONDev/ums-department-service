@@ -11,5 +11,6 @@ public interface DepartmentService {
 	List<Department> getAllDepartments();
 	void deleteDepartment(Long department);
 	Department updateDepartment(Department department);
+	void deleteSelectedDepartmentsByIds(List<Long> ids);
 
 }
