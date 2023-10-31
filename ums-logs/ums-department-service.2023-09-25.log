@@ -1,0 +1,307 @@
+10:31:24.578 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+10:31:25.180 [restartedMain] INFO  o.s.c.c.c.ConfigServicePropertySourceLocator - Fetching config from server at : http://localhost:9296
+10:31:26.057 [restartedMain] INFO  o.s.c.c.c.ConfigServicePropertySourceLocator - Located environment: name=UMS-DEPARTMENT-SERVICE, profiles=[default], label=null, version=abc948351d8765c2e5a2691c8f7f75664420de7d, state=null
+10:31:26.058 [restartedMain] INFO  o.s.c.b.c.PropertySourceBootstrapConfiguration - Located property source: [BootstrapPropertySource {name='bootstrapProperties-configClient'}, BootstrapPropertySource {name='bootstrapProperties-https://github.com/IKCONDev/ums-config-server/application.yaml'}]
+10:31:26.067 [restartedMain] INFO  c.i.u.d.UMSDepartmentServiceApplication - No active profile set, falling back to 1 default profile: "default"
+10:31:26.666 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+10:31:26.978 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 303 ms. Found 1 JPA repository interfaces.
+10:31:27.275 [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=7fb078dc-1f2b-31f5-8635-768e264658cb
+10:31:27.981 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 9001 (http)
+10:31:27.998 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9001"]
+10:31:28.002 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+10:31:28.002 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.78]
+10:31:28.252 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+10:31:28.252 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2172 ms
+10:31:28.300 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+10:31:28.581 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+10:31:28.595 [restartedMain] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/authentication'
+10:31:28.820 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+10:31:28.918 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+10:31:29.196 [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+10:31:29.352 [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+10:31:30.443 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+10:31:30.456 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+10:31:30.804 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+10:31:31.210 [restartedMain] WARN  o.s.b.d.a.OptionalLiveReloadServer - Unable to start LiveReload server
+10:31:31.544 [restartedMain] INFO  o.s.c.n.e.c.DiscoveryClientOptionalArgsConfiguration - Eureka HTTP Client uses RestTemplate.
+10:31:31.934 [restartedMain] WARN  o.s.c.l.c.LoadBalancerCacheAutoConfiguration$LoadBalancerCaffeineWarnLogger - Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+10:31:32.005 [restartedMain] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING
+10:31:32.059 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1
+10:31:32.066 [restartedMain] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+10:31:32.096 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false
+10:31:32.096 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null
+10:31:32.096 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false
+10:31:32.096 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient - Application is null : false
+10:31:32.096 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true
+10:31:32.096 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true
+10:31:32.096 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server
+10:31:32.326 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient - The response status is 200
+10:31:32.329 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30
+10:31:32.331 [restartedMain] INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4
+10:31:32.337 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1695618092336 with initial instances count: 6
+10:31:32.339 [restartedMain] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application UMS-DEPARTMENT-SERVICE with eureka with status UP
+10:31:32.340 [restartedMain] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1695618092340, current=UP, previous=STARTING]
+10:31:32.342 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-9001"]
+10:31:32.343 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_UMS-DEPARTMENT-SERVICE/IKCON1049:UMS-DEPARTMENT-SERVICE:9001: registering service...
+10:31:32.370 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 9001 (http) with context path ''
+10:31:32.371 [restartedMain] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 9001
+10:31:32.397 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_UMS-DEPARTMENT-SERVICE/IKCON1049:UMS-DEPARTMENT-SERVICE:9001 - registration status: 204
+10:31:32.637 [restartedMain] INFO  c.i.u.d.UMSDepartmentServiceApplication - Started UMSDepartmentServiceApplication in 8.973 seconds (JVM running for 10.339)
+10:36:32.141 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+10:41:32.190 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+10:43:16.704 [http-nio-9001-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+10:43:16.706 [http-nio-9001-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+10:43:16.924 [http-nio-9001-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 218 ms
+10:43:17.347 [http-nio-9001-exec-1] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:43:17.348 [http-nio-9001-exec-1] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:43:37.421 [http-nio-9001-exec-2] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:43:37.424 [http-nio-9001-exec-2] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:43:54.950 [http-nio-9001-exec-3] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:43:54.950 [http-nio-9001-exec-3] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:43:57.297 [http-nio-9001-exec-4] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:43:57.297 [http-nio-9001-exec-4] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:01.036 [http-nio-9001-exec-5] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:01.036 [http-nio-9001-exec-5] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:02.832 [http-nio-9001-exec-6] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:02.833 [http-nio-9001-exec-6] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:03.881 [http-nio-9001-exec-7] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:03.881 [http-nio-9001-exec-7] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:11.788 [http-nio-9001-exec-8] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:11.788 [http-nio-9001-exec-8] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:22.747 [http-nio-9001-exec-9] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:22.748 [http-nio-9001-exec-9] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:33.196 [http-nio-9001-exec-10] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:33.196 [http-nio-9001-exec-10] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:33.723 [http-nio-9001-exec-1] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:33.723 [http-nio-9001-exec-1] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:39.255 [http-nio-9001-exec-2] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:39.255 [http-nio-9001-exec-2] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:45.849 [http-nio-9001-exec-3] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:45.850 [http-nio-9001-exec-3] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:47.604 [http-nio-9001-exec-4] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:47.604 [http-nio-9001-exec-4] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:48.174 [http-nio-9001-exec-5] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:48.175 [http-nio-9001-exec-5] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:48.931 [http-nio-9001-exec-6] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:48.932 [http-nio-9001-exec-6] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:49.603 [http-nio-9001-exec-7] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:49.604 [http-nio-9001-exec-7] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:49.972 [http-nio-9001-exec-8] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:49.972 [http-nio-9001-exec-8] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:50.434 [http-nio-9001-exec-9] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:50.434 [http-nio-9001-exec-9] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:51.206 [http-nio-9001-exec-10] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:51.207 [http-nio-9001-exec-10] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:52.254 [http-nio-9001-exec-1] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:52.254 [http-nio-9001-exec-1] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:52.753 [http-nio-9001-exec-2] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:52.753 [http-nio-9001-exec-2] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:53.251 [http-nio-9001-exec-3] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:53.252 [http-nio-9001-exec-3] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:53.733 [http-nio-9001-exec-4] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:53.734 [http-nio-9001-exec-4] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:54.224 [http-nio-9001-exec-5] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:54.224 [http-nio-9001-exec-5] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:44:54.723 [http-nio-9001-exec-6] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:44:54.724 [http-nio-9001-exec-6] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:45:08.824 [http-nio-9001-exec-7] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:45:08.824 [http-nio-9001-exec-7] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:45:10.238 [http-nio-9001-exec-8] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:45:10.239 [http-nio-9001-exec-8] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:45:43.569 [http-nio-9001-exec-9] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:45:43.576 [http-nio-9001-exec-9] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:45:56.439 [http-nio-9001-exec-10] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:45:56.439 [http-nio-9001-exec-10] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:46:32.219 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+10:46:54.078 [http-nio-9001-exec-1] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:46:54.078 [http-nio-9001-exec-1] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:48:21.317 [http-nio-9001-exec-3] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:48:21.329 [http-nio-9001-exec-3] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:49:14.586 [http-nio-9001-exec-4] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:49:14.586 [http-nio-9001-exec-4] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:50:25.938 [http-nio-9001-exec-6] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:50:25.940 [http-nio-9001-exec-6] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:51:32.241 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+10:52:06.729 [http-nio-9001-exec-8] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:52:06.730 [http-nio-9001-exec-8] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:52:27.075 [http-nio-9001-exec-9] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:52:27.075 [http-nio-9001-exec-9] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:52:45.117 [http-nio-9001-exec-10] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:52:45.119 [http-nio-9001-exec-10] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:52:51.209 [http-nio-9001-exec-1] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+10:52:51.209 [http-nio-9001-exec-1] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+10:56:35.633 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+11:01:36.694 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+11:06:36.721 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+11:10:45.314 [http-nio-9001-exec-3] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+11:10:45.319 [http-nio-9001-exec-3] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+11:10:49.488 [http-nio-9001-exec-4] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+11:10:49.489 [http-nio-9001-exec-4] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+11:11:36.748 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+11:16:36.768 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+11:21:30.318 [http-nio-9001-exec-6] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+11:21:30.332 [http-nio-9001-exec-6] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+11:21:36.817 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+11:21:46.836 [http-nio-9001-exec-7] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+11:21:46.836 [http-nio-9001-exec-7] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+11:22:27.793 [http-nio-9001-exec-8] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+11:22:27.794 [http-nio-9001-exec-8] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+11:26:36.851 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+11:31:36.885 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+11:36:36.921 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+11:41:36.965 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+11:46:37.014 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+11:51:37.052 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+11:56:37.064 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+12:01:37.089 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+12:06:37.112 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+12:11:37.139 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+12:16:37.156 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+12:21:37.169 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+12:26:37.191 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+12:31:37.205 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+12:36:37.243 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+12:37:53.775 [http-nio-9001-exec-10] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+12:37:53.794 [http-nio-9001-exec-10] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+12:38:08.307 [http-nio-9001-exec-1] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+12:38:08.308 [http-nio-9001-exec-1] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+12:39:04.127 [http-nio-9001-exec-2] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+12:39:04.128 [http-nio-9001-exec-2] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+12:41:37.285 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+12:46:37.345 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+12:51:37.386 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+12:56:37.401 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+13:01:37.428 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+13:06:37.436 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+13:11:37.450 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+13:15:39.345 [http-nio-9001-exec-4] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+13:15:39.370 [http-nio-9001-exec-4] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+13:16:37.501 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+13:18:36.776 [http-nio-9001-exec-6] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+13:18:36.776 [http-nio-9001-exec-6] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+13:21:37.520 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+13:24:07.402 [http-nio-9001-exec-8] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+13:24:07.405 [http-nio-9001-exec-8] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+13:24:36.482 [http-nio-9001-exec-9] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+13:24:36.482 [http-nio-9001-exec-9] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+13:25:45.924 [http-nio-9001-exec-1] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+13:25:45.925 [http-nio-9001-exec-1] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+13:26:37.549 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+13:28:47.650 [http-nio-9001-exec-3] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+13:28:47.668 [http-nio-9001-exec-3] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+13:30:24.414 [http-nio-9001-exec-5] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+13:30:24.423 [http-nio-9001-exec-5] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+13:31:37.564 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+13:34:38.617 [http-nio-9001-exec-7] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+13:34:38.621 [http-nio-9001-exec-7] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+13:36:37.588 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+13:39:46.493 [http-nio-9001-exec-9] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+13:39:46.496 [http-nio-9001-exec-9] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+13:39:57.123 [http-nio-9001-exec-10] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+13:39:57.123 [http-nio-9001-exec-10] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+13:41:37.617 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+13:43:45.897 [http-nio-9001-exec-2] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+13:43:45.899 [http-nio-9001-exec-2] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+13:44:03.165 [http-nio-9001-exec-3] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+13:44:03.165 [http-nio-9001-exec-3] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+13:44:08.868 [http-nio-9001-exec-4] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+13:44:08.868 [http-nio-9001-exec-4] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+13:44:41.519 [http-nio-9001-exec-5] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+13:44:41.519 [http-nio-9001-exec-5] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+13:46:37.651 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+13:48:28.546 [http-nio-9001-exec-7] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+13:48:28.547 [http-nio-9001-exec-7] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+13:51:37.661 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+13:55:38.228 [http-nio-9001-exec-9] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+13:55:38.236 [http-nio-9001-exec-9] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+13:56:37.709 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+14:00:09.407 [http-nio-9001-exec-1] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+14:00:09.408 [http-nio-9001-exec-1] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+14:00:20.026 [http-nio-9001-exec-2] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+14:00:20.026 [http-nio-9001-exec-2] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+14:01:37.728 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+14:03:03.440 [http-nio-9001-exec-4] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+14:03:03.441 [http-nio-9001-exec-4] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+14:03:54.864 [http-nio-9001-exec-5] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+14:03:54.865 [http-nio-9001-exec-5] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+14:04:36.577 [http-nio-9001-exec-6] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+14:04:36.578 [http-nio-9001-exec-6] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+14:06:37.762 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+14:51:41.800 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=41m5s303ms854µs301ns).
+14:52:13.067 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+14:53:31.549 [http-nio-9001-exec-8] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+14:53:31.550 [http-nio-9001-exec-8] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+14:57:13.080 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+15:02:13.183 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+15:06:33.554 [http-nio-9001-exec-10] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+15:06:33.570 [http-nio-9001-exec-10] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+15:07:13.217 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+15:10:56.813 [http-nio-9001-exec-2] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+15:10:56.832 [http-nio-9001-exec-2] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+15:12:13.274 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+15:17:13.303 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+15:22:13.331 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+15:27:13.358 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+15:32:13.395 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+15:37:13.437 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+15:42:13.472 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+15:47:13.515 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+15:49:29.786 [http-nio-9001-exec-4] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+15:49:29.793 [http-nio-9001-exec-4] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+15:51:15.559 [http-nio-9001-exec-6] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+15:51:15.568 [http-nio-9001-exec-6] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+15:52:13.540 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+15:57:13.594 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+16:02:13.617 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+16:07:13.635 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+16:09:25.931 [http-nio-9001-exec-8] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+16:09:25.940 [http-nio-9001-exec-8] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+16:09:35.874 [http-nio-9001-exec-9] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+16:09:35.875 [http-nio-9001-exec-9] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+16:12:13.700 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+16:16:53.119 [http-nio-9001-exec-1] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+16:16:53.134 [http-nio-9001-exec-1] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+16:17:13.746 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+16:22:13.761 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+16:27:04.302 [http-nio-9001-exec-3] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+16:27:04.314 [http-nio-9001-exec-3] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+16:27:13.791 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+16:32:13.821 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+16:37:13.858 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+16:42:13.927 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+16:47:13.955 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+16:52:13.993 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+16:57:14.022 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+16:58:54.658 [http-nio-9001-exec-5] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+16:58:54.660 [http-nio-9001-exec-5] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+16:58:55.146 [http-nio-9001-exec-6] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+16:58:55.146 [http-nio-9001-exec-6] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+16:58:57.633 [http-nio-9001-exec-7] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+16:58:57.634 [http-nio-9001-exec-7] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+16:59:44.632 [http-nio-9001-exec-8] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+16:59:44.632 [http-nio-9001-exec-8] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+16:59:58.780 [http-nio-9001-exec-9] INFO  c.i.u.d.c.DepartmentController - DepartmentController.findDepartmentById() Entered :: departmentId :: 1
+16:59:58.780 [http-nio-9001-exec-9] INFO  c.i.u.d.s.impl.DepartmentServiceImpl - DepartmentService.findDepartmentById() Entered : departmentId : 1
+17:02:14.049 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+17:07:14.074 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+17:12:14.097 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+17:17:14.164 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+17:53:13.087 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=34m28s764ms941µs400ns).
+17:56:13.130 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+18:01:13.164 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration
+22:04:57.656 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h59m44s251ms381µs800ns).
+22:05:10.439 [RMI TCP Connection(384)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+22:05:10.439 [RMI TCP Connection(383)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+22:05:10.557 [RMI TCP Connection(383)-127.0.0.1] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Unregistering application UMS-DEPARTMENT-SERVICE with eureka with status DOWN
+22:05:10.560 [RMI TCP Connection(383)-127.0.0.1] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1695659710560, current=DOWN, previous=UP]
+22:05:10.563 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_UMS-DEPARTMENT-SERVICE/IKCON1049:UMS-DEPARTMENT-SERVICE:9001: registering service...
+22:05:10.709 [RMI TCP Connection(385)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+22:05:10.757 [RMI TCP Connection(386)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+22:05:10.779 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_UMS-DEPARTMENT-SERVICE/IKCON1049:UMS-DEPARTMENT-SERVICE:9001 - registration status: 204
+22:05:10.948 [RMI TCP Connection(387)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+22:05:11.114 [RMI TCP Connection(383)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-9001"]
+22:05:11.115 [RMI TCP Connection(383)-127.0.0.1] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+22:05:11.138 [RMI TCP Connection(388)-127.0.0.1] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+22:05:11.157 [RMI TCP Connection(383)-127.0.0.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Destroying Spring FrameworkServlet 'dispatcherServlet'
+22:05:11.224 [RMI TCP Connection(383)-127.0.0.1] INFO  o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-9001"]
+22:05:11.367 [RMI TCP Connection(383)-127.0.0.1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'

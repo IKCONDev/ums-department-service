@@ -39,6 +39,9 @@ public class ErrorCodeMessages {
 	 public static final String ERR_DEPT_DETAILS_GET_UNSUCESS_MSG = "Error Occured While Retrieving Department Details !"; 
 
 	 public static final String ERR_DEPT_RETRIEVE_ALL_UNSUCESS_CODE = "DEPARTMENT-RETRIEVE-ALL-UNSUCESS-1014";
-	 public static final String ERR_DEPT_RETRIEVE_ALL_UNSUCESS_MSG = "Error Occured While Retrieving Department Details !"; 
+	 public static final String ERR_DEPT_RETRIEVE_ALL_UNSUCESS_MSG = "Error Occured While Retrieving Department Details !";
+	 
+	 public static final String ERR_DEPT_NAME_EXISTS_CODE = "DEPARTMENT-ERR_DEPT_NAME_EXISTS_CODE-1015";
+	 public static final String ERR_DEPT_NAME_EXISTS_MSG = "Department name already exists !"; 
 
 }

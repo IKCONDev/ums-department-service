@@ -2,13 +2,14 @@ package com.ikn.ums.department.service.impl;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ikn.ums.department.entity.Department;
+import com.ikn.ums.department.exception.DepartmentNameExistsException;
 import com.ikn.ums.department.exception.EmptyInputException;
 import com.ikn.ums.department.exception.EmptyListException;
 import com.ikn.ums.department.exception.EntityNotFoundException;
@@ -32,6 +33,11 @@ public class DepartmentServiceImpl implements DepartmentService {
 		if (department == null) {
 			throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE,
 					ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
+		}
+		//check if dept already exists
+		if(isDepartmentNameExists(department)) {
+			throw new DepartmentNameExistsException(ErrorCodeMessages.ERR_DEPT_ID_ALREADY_EXISTS_CODE,
+					ErrorCodeMessages.ERR_DEPT_ID_ALREADY_EXISTS_MSG);
 		}
 		//set current date time for newly inserted record
 			department.setCreatedDateTime(LocalDateTime.now());
@@ -113,6 +119,23 @@ public class DepartmentServiceImpl implements DepartmentService {
 			departmentRepository.deleteAll(departmentList);
 		}
 		
+	}
+	
+	public boolean isDepartmentNameExists(Department department) {
+		log.info("DepartmentServiceImpl.isDepartmentNameExists() ENTERED : role : " );
+		boolean isDeptNameExists = false;
+		
+		if (department == null) {
+			throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE,
+					ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
+		} else {
+			log.info("DepartmentServiceImpl  : Dept Id : " + department.getDepartmentId() + " Dept Name : " + department.getDepartmentName());
+			Optional<Department> optRole = departmentRepository.findByDepartmentName( department.getDepartmentName() );
+		//	isRoleNameExists = optRole.get().getRoleName().equalsIgnoreCase(role.getRoleName());
+			isDeptNameExists = optRole.isPresent();
+			log.info("DepartmentServiceImpl  : isDeptNameExists : " + isDeptNameExists);
+		}
+		return isDeptNameExists;
 	}
 
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ikn.ums.department.VO.DepartmentListVO;
 import com.ikn.ums.department.entity.Department;
 import com.ikn.ums.department.exception.ControllerException;
+import com.ikn.ums.department.exception.DepartmentNameExistsException;
 import com.ikn.ums.department.exception.EmptyInputException;
 import com.ikn.ums.department.exception.EmptyListException;
 import com.ikn.ums.department.exception.EntityNotFoundException;
@@ -45,7 +46,11 @@ public class DepartmentController {
 			Department savedDepartment = departmentService.saveDepartment(department);
 			log.info("DepartmentController.saveDepartmente() : Post Employee method calling .... " + savedDepartment);
 			return new ResponseEntity<Department>(savedDepartment, HttpStatus.CREATED);
-		} catch (Exception e) {
+		} 
+		catch (DepartmentNameExistsException | EntityNotFoundException businessException) {
+			throw businessException;
+		}
+		catch (Exception e) {
 			log.info("DepartmentController.saveDepartment() : Exception Occured !" + e.fillInStackTrace());
 			throw new ControllerException(ErrorCodeMessages.DEPT_SAVE_SUCCESS_CODE,
 					ErrorCodeMessages.DEPT_SAVE_SUCCESS_MSG);

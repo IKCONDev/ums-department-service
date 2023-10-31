@@ -84,5 +84,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		log.info("DEPARTMENT SERVICE : GlobalExceptionHandler.handleEmptyInput() ENTERED" + ex.getMessage());
 		return new ResponseEntity<Object>("Please change your http method type.", HttpStatus.NOT_FOUND);
 	}
+	
+	@ExceptionHandler(DepartmentNameExistsException.class)
+	public ResponseEntity<String> handleDepartmentNameExistsException(DepartmentNameExistsException departmentNameExistsException) {
+		log.info("DEPARTMENT SERVICE : GlobalExceptionHandler.handleControllerException() ENTERED");
+		log.info("DEPARTMENT SERVICE : Controller Exception Occurred" + departmentNameExistsException.getMessage());
+		return new ResponseEntity<String>("Business Exception.", HttpStatus.FOUND);
+	}
 
 }
