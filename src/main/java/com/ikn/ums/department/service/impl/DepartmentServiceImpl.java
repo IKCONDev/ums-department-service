@@ -39,10 +39,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 			throw new DepartmentNameExistsException(ErrorCodeMessages.ERR_DEPT_ID_ALREADY_EXISTS_CODE,
 					ErrorCodeMessages.ERR_DEPT_ID_ALREADY_EXISTS_MSG);
 		}
+		log.info("DepartmentService.saveDepartment() is under execution");
 		//set current date time for newly inserted record
-			department.setCreatedDateTime(LocalDateTime.now());
+		department.setCreatedDateTime(LocalDateTime.now());
 		
 		savedDepartment = departmentRepository.save(department);
+		log.info("DepartmentService.saveDepartment() executed successfully");
 		return savedDepartment;
 	}
 
@@ -55,12 +57,14 @@ public class DepartmentServiceImpl implements DepartmentService {
 			throw new EmptyInputException(ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_CODE,
 					ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_MSG);
 		}
+		log.info("DepartmentService.findDepartmentById() is under execution...");
 		retrievedDepartment = departmentRepository.findByDepartmentId(departmentId);
 		if (retrievedDepartment == null) {
 			log.info("DepartmentService.findDepartmentById() in retrievedDepartment is null.");
 			throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE,
 					ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
 		}
+		log.info("DepartmentService.findDepartmentById() executed successfully");
 		return retrievedDepartment;
 	}
 	
@@ -68,10 +72,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 	public List<Department> getAllDepartments() {
 		log.info("DepartmentService.getAllDepartments() Entered ");
 		List<Department> departmentList = null;
+		log.info("DepartmentService.getAllDepartments() is under execution...");
 		departmentList = departmentRepository.findAll();
 		if (departmentList == null || departmentList.isEmpty() || departmentList.size() == 0 )
 			throw new EmptyListException(ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_CODE,
 					ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_MSG);
+		log.info("DepartmentService.getAllDepartments() executed successfully");
 		return departmentList;
 	}
 
@@ -81,17 +87,20 @@ public class DepartmentServiceImpl implements DepartmentService {
 		if (departmentId == 0)
 			throw new EmptyInputException(ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_CODE,
 					ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_MSG);
+		log.info("DepartmentService.deleteDepartment() is under execution...");
 		departmentRepository.deleteById(departmentId);
+		log.info("DepartmentService.deleteDepartment() executed successfully");
 	}
 
 	@Override
 	public Department updateDepartment(Department department) {
 		Department updatedDepartment = null;
-		log.info("DepartmentService.updateDepartment() Entered");
+		log.info("DepartmentService.updateDepartment() Entered with args : department");
 		if (department == null) {
 			throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE,
 					ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
 		}
+		log.info("DepartmentService.updateDepartment() is under execution...");
 		Department dbDepartment = null;
 		if(department.getDepartmentId() != null) {
 			dbDepartment = departmentRepository.findByDepartmentId(department.getDepartmentId());
@@ -103,6 +112,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 			dbDepartment.setModifiedDateTime(LocalDateTime.now());
 		}
 		updatedDepartment = departmentRepository.save(dbDepartment);
+		log.info("DepartmentService.updateDepartment() executed successfully");
 		return updatedDepartment;
 		
 	}
@@ -110,31 +120,36 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Transactional
 	@Override
 	public void deleteSelectedDepartmentsByIds(List<Long> ids) {
+		log.info("DepartmentServiceImpl.deleteSelectedDepartmentsByIds() ENTERED with args : ids" );
 		if(ids.size() < 1) {
 			throw new EmptyListException(ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_CODE, 
 					ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_MSG);
 		}
+		log.info("DepartmentServiceImpl.deleteSelectedDepartmentsByIds() is under execution...");
 		List<Department> departmentList = departmentRepository.findAllById(ids);
 		if(departmentList.size() > 0) {
 			departmentRepository.deleteAll(departmentList);
 		}
+		log.info("DepartmentServiceImpl.deleteSelectedDepartmentsByIds() executed successfully");
 		
 	}
 	
 	public boolean isDepartmentNameExists(Department department) {
-		log.info("DepartmentServiceImpl.isDepartmentNameExists() ENTERED : role : " );
+		log.info("DepartmentServiceImpl.isDepartmentNameExists() ENTERED : department : " );
 		boolean isDeptNameExists = false;
 		
 		if (department == null) {
 			throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE,
 					ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
 		} else {
+			log.info("DepartmentServiceImpl.isDepartmentNameExists() is under execution..." );
 			log.info("DepartmentServiceImpl  : Dept Id : " + department.getDepartmentId() + " Dept Name : " + department.getDepartmentName());
 			Optional<Department> optRole = departmentRepository.findByDepartmentName( department.getDepartmentName() );
 		//	isRoleNameExists = optRole.get().getRoleName().equalsIgnoreCase(role.getRoleName());
 			isDeptNameExists = optRole.isPresent();
 			log.info("DepartmentServiceImpl  : isDeptNameExists : " + isDeptNameExists);
 		}
+		log.info("DepartmentServiceImpl.isDepartmentNameExists() executed successfully" );
 		return isDeptNameExists;
 	}
 
