@@ -7,7 +7,13 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
+import com.ikn.ums.department.VO.EmployeeVO;
 import com.ikn.ums.department.entity.Department;
 import com.ikn.ums.department.exception.DepartmentNameExistsException;
 import com.ikn.ums.department.exception.EmptyInputException;
@@ -17,6 +23,7 @@ import com.ikn.ums.department.exception.ErrorCodeMessages;
 import com.ikn.ums.department.repository.DepartmentRepository;
 import com.ikn.ums.department.service.DepartmentService;
 
+
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -25,7 +32,10 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Autowired
 	private DepartmentRepository departmentRepository;
-
+    
+	@Autowired
+	private RestTemplate restTemplate;
+	
 	@Override
 	public Department saveDepartment(Department department) {
 		Department savedDepartment = null;
@@ -78,7 +88,33 @@ public class DepartmentServiceImpl implements DepartmentService {
 			throw new EmptyListException(ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_CODE,
 					ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_MSG);
 		log.info("DepartmentService.getAllDepartments() executed successfully");
-		return departmentList;
+		StringBuilder st = new StringBuilder();
+		departmentList.forEach(department ->{
+			st.append(department.getDepartmentHead()+",");
+		});
+		ResponseEntity<List<com.ikn.ums.department.VO.EmployeeVO>> responseEntity = restTemplate.exchange(
+			    "http://UMS-EMPLOYEE-SERVICE/employees/attendees/"+st,
+			    HttpMethod.GET,
+			    null,
+			    new ParameterizedTypeReference<List<com.ikn.ums.department.VO.EmployeeVO>>() {}
+		);
+		List<EmployeeVO> updatedDepartmentList = responseEntity.getBody();
+		System.out.println("the employee updated list is"+responseEntity.getBody());
+		List<Department> updatedList = departmentList;
+		updatedDepartmentList.forEach(employee ->{
+			for(int i=0; i<updatedList.size();i++) {
+				Department department = updatedList.get(i);
+				System.out.println("current department Object:"+ department);			
+				if((employee.getEmail()).equals(updatedList.get(i).getDepartmentHead())) {
+					System.out.println("Equal matches");
+					updatedList.set(i,department).setDepartmentHead(employee.getFirstName());
+					
+				}
+			}
+			
+		});
+		System.out.println("updated Department List is"+updatedList);
+		return updatedList;
 	}
 
 	@Override
