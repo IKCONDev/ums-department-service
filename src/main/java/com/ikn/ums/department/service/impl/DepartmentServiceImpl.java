@@ -136,6 +136,11 @@ public class DepartmentServiceImpl implements DepartmentService {
 			throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE,
 					ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
 		}
+		if(isDepartmentNameExists(department)) {
+			throw new DepartmentNameExistsException(ErrorCodeMessages.ERR_DEPT_ID_ALREADY_EXISTS_CODE,
+					ErrorCodeMessages.ERR_DEPT_ID_ALREADY_EXISTS_MSG);
+		}
+		
 		log.info("DepartmentService.updateDepartment() is under execution...");
 		Department dbDepartment = null;
 		if(department.getDepartmentId() != null) {
@@ -181,8 +186,8 @@ public class DepartmentServiceImpl implements DepartmentService {
 			log.info("DepartmentServiceImpl.isDepartmentNameExists() is under execution..." );
 			log.info("DepartmentServiceImpl  : Dept Id : " + department.getDepartmentId() + " Dept Name : " + department.getDepartmentName());
 			Optional<Department> optRole = departmentRepository.findByDepartmentName( department.getDepartmentName() );
-		//	isRoleNameExists = optRole.get().getRoleName().equalsIgnoreCase(role.getRoleName());
-			isDeptNameExists = optRole.isPresent();
+//			isRoleNameExists = optRole.get().getRoleName().equalsIgnoreCase(role.getRoleName());
+		    isDeptNameExists = optRole.filter(dep -> !dep.getDepartmentId().equals(department.getDepartmentId())).isPresent();
 			log.info("DepartmentServiceImpl  : isDeptNameExists : " + isDeptNameExists);
 		}
 		log.info("DepartmentServiceImpl.isDepartmentNameExists() executed successfully" );

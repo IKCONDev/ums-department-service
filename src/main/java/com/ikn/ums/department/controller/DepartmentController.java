@@ -58,23 +58,27 @@ public class DepartmentController {
 	}
 
 	@PutMapping("/update")
-	public ResponseEntity<Department> updateDepartment(@RequestBody Department department) {
-		log.info("DepartmentController.updateDepartment() ENTERED ");
-		Department updatedDeparment = new Department();
-		if (department == null)
-			throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE,
-					ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
-		try {
-			log.info("DepartmentController.updateDepartment() is under execution...");
-			updatedDeparment = departmentService.updateDepartment(department);
-			log.info("DepartmentController.updateDepartment() executed successfully");
-			return new ResponseEntity<Department>(updatedDeparment, HttpStatus.CREATED);
-		} catch (Exception e) {
-			log.info("DepartmentController.updateEmployee() : Exception Occured !" + e.fillInStackTrace());
-			throw new ControllerException(ErrorCodeMessages.ERR_DEPT_UPDATE_UNSUCCESS_CODE,
-					ErrorCodeMessages.ERR_DEPT_UPDATE_UNSUCCESS_MSG);
+		public ResponseEntity<Department> updateDepartment(@RequestBody Department department) {
+			log.info("DepartmentController.updateDepartment() ENTERED ");
+			Department updatedDeparment = new Department();
+			if (department == null)
+				throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE,
+						ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
+			try {
+				log.info("DepartmentController.updateDepartment() is under execution...");
+				updatedDeparment = departmentService.updateDepartment(department);
+				log.info("DepartmentController.updateDepartment() executed successfully");
+				return new ResponseEntity<Department>(updatedDeparment, HttpStatus.CREATED);
+			}
+			catch (DepartmentNameExistsException | EntityNotFoundException businessException) {
+				throw businessException;
+			}
+			catch (Exception e) {
+				log.info("DepartmentController.updateEmployee() : Exception Occured !" + e.fillInStackTrace());
+				throw new ControllerException(ErrorCodeMessages.ERR_DEPT_UPDATE_UNSUCCESS_CODE,
+						ErrorCodeMessages.ERR_DEPT_UPDATE_UNSUCCESS_MSG);
+			}
 		}
-	}
 
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteDepartment(@PathVariable("id") Long departmentId) {
