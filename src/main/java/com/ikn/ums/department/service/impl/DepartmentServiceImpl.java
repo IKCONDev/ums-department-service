@@ -107,7 +107,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 				System.out.println("current department Object:"+ department);			
 				if((employee.getEmail()).equals(updatedList.get(i).getDepartmentHead())) {
 					System.out.println("Equal matches");
-					updatedList.set(i,department).setDepartmentHead(employee.getFirstName());
+					updatedList.set(i,department).setDepartmentHead(employee.getFirstName()+" "+employee.getLastName());
 					
 				}
 			}
