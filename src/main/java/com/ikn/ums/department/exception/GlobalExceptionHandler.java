@@ -91,5 +91,17 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		log.info("DEPARTMENT SERVICE : Controller Exception Occurred" + departmentNameExistsException.getMessage());
 		return new ResponseEntity<String>("Business Exception.", HttpStatus.FOUND);
 	}
+	
+	/**
+	 * DepartmentIdInUsageException handles the exception when the Role Name is exists
+	 * @param departmentIdInUsageException
+	 * @return
+	 */
+	@ExceptionHandler(DepartmentInUsageException.class)
+	public ResponseEntity<String> handleDepartmentInUsageException(DepartmentInUsageException departmentIdInUsageException) {
+		log.info("GlobalExceptionHandler.handleDepartmentInUsageException() ENTERED" + departmentIdInUsageException.getMessage());
+		return new ResponseEntity<String>("Departments Are Assigned to employee and are in Usage.", HttpStatus.IM_USED);
+	}
+	
 
 }

@@ -43,5 +43,8 @@ public class ErrorCodeMessages {
 	 
 	 public static final String ERR_DEPT_NAME_EXISTS_CODE = "DEPARTMENT-ERR_DEPT_NAME_EXISTS_CODE-1015";
 	 public static final String ERR_DEPT_NAME_EXISTS_MSG = "Department name already exists !"; 
+	 
+	 public static final String ERR_DEPT_IS_IN_USAGE_CODE = "ERR_DEPT_IS_IN_USAGE_CODE - 1016";
+	 public static final String ERR_DEPT_IS_IN_USAGE_MSG = "Department is in Usage";
 
 }

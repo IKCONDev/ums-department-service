@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ikn.ums.department.VO.DepartmentListVO;
 import com.ikn.ums.department.entity.Department;
 import com.ikn.ums.department.exception.ControllerException;
+import com.ikn.ums.department.exception.DepartmentInUsageException;
 import com.ikn.ums.department.exception.DepartmentNameExistsException;
 import com.ikn.ums.department.exception.EmptyInputException;
 import com.ikn.ums.department.exception.EmptyListException;
@@ -35,7 +36,7 @@ public class DepartmentController {
 	private DepartmentServiceImpl departmentService;
 
 	@PostMapping("/save")
-	public ResponseEntity<?> saveDepartment(@RequestBody Department department) {
+	public ResponseEntity<Department> saveDepartment(@RequestBody Department department) {
 		log.info("DepartmentController.saveDepartment() Entered : department : " + department);
 		if (department == null) {
 			log.info("DepartmentController.saveDepartment() : department Object is NULL !");
@@ -81,7 +82,7 @@ public class DepartmentController {
 		}
 
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteDepartment(@PathVariable("id") Long departmentId) {
+	public ResponseEntity<Boolean> deleteDepartment(@PathVariable("id") Long departmentId) {
 		boolean isDeleted= false;
 		log.info("DepartmentController.deleteDepartment() ENTERED : departmentId : " + departmentId);
 		if (departmentId <= 0)
@@ -93,7 +94,11 @@ public class DepartmentController {
 			isDeleted = true;
 			log.info("DepartmentController.deleteDepartment() executed successfully");
 			return new ResponseEntity<>(isDeleted, HttpStatus.OK);
-		} catch (Exception e) {
+		}
+		catch (EmptyListException | DepartmentInUsageException businessException) {
+			throw businessException;
+		} 
+		catch (Exception e) {
 			log.info("DepartmentController.deleteDepartment() : Exception Occured while deleting Department !"
 					+ e.fillInStackTrace());
 			throw new ControllerException(ErrorCodeMessages.ERR_DEPT_DELETE_UNSUCCESS_CODE,
@@ -122,7 +127,7 @@ public class DepartmentController {
 	}
 
 	@GetMapping("/all")
-	public ResponseEntity<?> getAllDepartments() {
+	public ResponseEntity<List<Department>> getAllDepartments() {
 		log.info("DepartmentController.getAllDepartments() ENTERED");
 		log.info("DepartmentController.getAllDepartments() is under execution...");
 		List<Department> departmentDbList = departmentService.getAllDepartments();
@@ -143,7 +148,7 @@ public class DepartmentController {
 	}
 	
 	@DeleteMapping("/delete/all/{ids}")
-	public ResponseEntity<?> deleteAllDepartmentsByIds(@PathVariable List<Long> ids){
+	public ResponseEntity<Boolean> deleteAllDepartmentsByIds(@PathVariable List<Long> ids){
 		log.info("DepartmentController.deleteAllDepartmentsByIds() ENTERED with args: ids");
 		if(ids == null || ids.size() == 0 || ids.equals((null))){
 			throw new EmptyInputException(ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_CODE, 
@@ -154,7 +159,11 @@ public class DepartmentController {
 			departmentService.deleteSelectedDepartmentsByIds(ids);
 			log.info("DepartmentController.deleteAllDepartmentsByIds() executed successfully");
 			return new ResponseEntity<>(true, HttpStatus.OK);
-		}catch (Exception e) {
+		}
+		catch (EmptyListException | DepartmentInUsageException businessException) {
+			throw businessException;
+		} 
+		catch (Exception e) {
 			throw new ControllerException(ErrorCodeMessages.ERR_DEPT_DELETE_UNSUCCESS_CODE,
 					ErrorCodeMessages.ERR_DEPT_DELETE_UNSUCCESS_MSG);
 		}

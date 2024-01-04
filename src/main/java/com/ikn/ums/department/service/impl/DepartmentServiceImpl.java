@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.ikn.ums.department.VO.EmployeeVO;
 import com.ikn.ums.department.entity.Department;
+import com.ikn.ums.department.exception.DepartmentInUsageException;
 import com.ikn.ums.department.exception.DepartmentNameExistsException;
 import com.ikn.ums.department.exception.EmptyInputException;
 import com.ikn.ums.department.exception.EmptyListException;
@@ -120,11 +121,23 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Override
 	public void deleteDepartment(Long departmentId) {
 		log.info("DepartmentService.deleteDepartment() Entered ");
-		if (departmentId == 0)
+		if (departmentId <= 0)
 			throw new EmptyInputException(ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_CODE,
 					ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_MSG);
 		log.info("DepartmentService.deleteDepartment() is under execution...");
-		departmentRepository.deleteById(departmentId);
+		Optional<Department> optDepartment = departmentRepository.findById(departmentId);
+		if(!optDepartment.isPresent() || optDepartment == null) {
+			throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE, 
+					ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
+		}else {
+		  Long departmentCount = departmentRepository.findDepartmentIdCount(departmentId);
+		  if(departmentCount > 0) {
+			throw new DepartmentInUsageException(ErrorCodeMessages.ERR_DEPT_IS_IN_USAGE_CODE, 
+					ErrorCodeMessages.ERR_DEPT_IS_IN_USAGE_MSG);
+		  }
+		  departmentRepository.deleteById(departmentId);
+		  
+	    }
 		log.info("DepartmentService.deleteDepartment() executed successfully");
 	}
 
@@ -162,15 +175,20 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Override
 	public void deleteSelectedDepartmentsByIds(List<Long> ids) {
 		log.info("DepartmentServiceImpl.deleteSelectedDepartmentsByIds() ENTERED with args : ids" );
-		if(ids.size() < 1) {
+		if(ids.size() <= 0) {
 			throw new EmptyListException(ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_CODE, 
 					ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_MSG);
 		}
 		log.info("DepartmentServiceImpl.deleteSelectedDepartmentsByIds() is under execution...");
-		List<Department> departmentList = departmentRepository.findAllById(ids);
-		if(departmentList.size() > 0) {
-			departmentRepository.deleteAll(departmentList);
-		}
+		//List<Department> departmentList = departmentRepository.findAllById(ids);
+		ids.forEach(id ->{
+			Long departmentCount = departmentRepository.findDepartmentIdCount(id);
+			if(departmentCount > 0) {
+				throw new DepartmentInUsageException(ErrorCodeMessages.ERR_DEPT_IS_IN_USAGE_CODE, 
+						ErrorCodeMessages.ERR_DEPT_IS_IN_USAGE_MSG);
+			}
+		});
+		departmentRepository.deleteAllById(ids);
 		log.info("DepartmentServiceImpl.deleteSelectedDepartmentsByIds() executed successfully");
 		
 	}
