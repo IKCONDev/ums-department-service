@@ -11,7 +11,6 @@ public class UMSDepartmentServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UMSDepartmentServiceApplication.class, args);
-		
 		System.out.println("UMSDepartmentServiceApplication.main()");
 	}
 

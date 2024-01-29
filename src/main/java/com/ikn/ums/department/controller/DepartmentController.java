@@ -37,22 +37,23 @@ public class DepartmentController {
 
 	@PostMapping("/save")
 	public ResponseEntity<Department> saveDepartment(@RequestBody Department department) {
-		log.info("DepartmentController.saveDepartment() Entered : department : " + department);
+		log.info("saveDepartment() Entered : department : " + department);
 		if (department == null) {
-			log.info("DepartmentController.saveDepartment() : department Object is NULL !");
+			log.info("saveDepartment() : department Object is NULL !");
 			throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE,
 					ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
 		}
 		try {
 			Department savedDepartment = departmentService.saveDepartment(department);
-			log.info("DepartmentController.saveDepartmente() : Post Employee method calling .... " + savedDepartment);
+			log.info("saveDepartment() : Post Employee method calling .... " + savedDepartment);
 			return new ResponseEntity<Department>(savedDepartment, HttpStatus.CREATED);
 		} 
 		catch (DepartmentNameExistsException | EntityNotFoundException businessException) {
+			log.error("saveDepartment() : Exception Occured !" + businessException.getMessage(), businessException);
 			throw businessException;
 		}
 		catch (Exception e) {
-			log.info("DepartmentController.saveDepartment() : Exception Occured !" + e.fillInStackTrace());
+			log.error("saveDepartment() : Exception Occured !" + e.getMessage(), e);
 			throw new ControllerException(ErrorCodeMessages.DEPT_SAVE_SUCCESS_CODE,
 					ErrorCodeMessages.DEPT_SAVE_SUCCESS_MSG);
 		}
@@ -60,22 +61,23 @@ public class DepartmentController {
 
 	@PutMapping("/update")
 		public ResponseEntity<Department> updateDepartment(@RequestBody Department department) {
-			log.info("DepartmentController.updateDepartment() ENTERED ");
+			log.info("updateDepartment() ENTERED ");
 			Department updatedDeparment = new Department();
 			if (department == null)
 				throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE,
 						ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
 			try {
-				log.info("DepartmentController.updateDepartment() is under execution...");
+				log.info("updateDepartment() is under execution...");
 				updatedDeparment = departmentService.updateDepartment(department);
-				log.info("DepartmentController.updateDepartment() executed successfully");
+				log.info("updateDepartment() executed successfully");
 				return new ResponseEntity<Department>(updatedDeparment, HttpStatus.CREATED);
 			}
 			catch (DepartmentNameExistsException | EntityNotFoundException businessException) {
+				log.error("updateEmployee() : Exception Occured !" + businessException.getMessage(),businessException);
 				throw businessException;
 			}
 			catch (Exception e) {
-				log.info("DepartmentController.updateEmployee() : Exception Occured !" + e.fillInStackTrace());
+				log.error("updateEmployee() : Exception Occured !" + e.getMessage(),e);
 				throw new ControllerException(ErrorCodeMessages.ERR_DEPT_UPDATE_UNSUCCESS_CODE,
 						ErrorCodeMessages.ERR_DEPT_UPDATE_UNSUCCESS_MSG);
 			}
@@ -89,18 +91,20 @@ public class DepartmentController {
 			throw new EmptyInputException(ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_CODE,
 					ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_MSG);
 		try {
-			log.info("DepartmentController.deleteDepartment() is under execution...");
+			log.info("deleteDepartment() is under execution...");
 			departmentService.deleteDepartment(departmentId);
 			isDeleted = true;
-			log.info("DepartmentController.deleteDepartment() executed successfully");
+			log.info("deleteDepartment() executed successfully");
 			return new ResponseEntity<>(isDeleted, HttpStatus.OK);
 		}
 		catch (EmptyListException | DepartmentInUsageException businessException) {
+			log.error("deleteDepartment() : Exception Occured while deleting Department !"+ businessException.getMessage(),
+					businessException);
 			throw businessException;
 		} 
 		catch (Exception e) {
-			log.info("DepartmentController.deleteDepartment() : Exception Occured while deleting Department !"
-					+ e.fillInStackTrace());
+			log.error("deleteDepartment() : Exception Occured while deleting Department !"
+					+ e.getMessage(),e);
 			throw new ControllerException(ErrorCodeMessages.ERR_DEPT_DELETE_UNSUCCESS_CODE,
 					ErrorCodeMessages.ERR_DEPT_DELETE_UNSUCCESS_CODE);
 		}
@@ -108,19 +112,19 @@ public class DepartmentController {
 
 	@GetMapping("/{id}")
 	public Department findDepartmentById(@PathVariable("id") Long departmentId) {
-		log.info("DepartmentController.findDepartmentById() Entered :: departmentId :: " + departmentId);
+		log.info("findDepartmentById() Entered :: departmentId :: " + departmentId);
 
 		if (departmentId <= 0)
 			throw new EmptyInputException(ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_CODE,
 					ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_MSG);
 		try {
-			log.info("DepartmentController.findDepartmentById() is under execution...");
+			log.info("findDepartmentById() is under execution...");
 			System.out.println(departmentService.findDepartmentById(departmentId));
-			log.info("DepartmentController.findDepartmentById() executed successfully");
+			log.info("findDepartmentById() executed successfully");
 			return departmentService.findDepartmentById(departmentId);
 		} catch (Exception e) {
-			log.info("DepartmentController.findDepartmentById() : Exception Occured while getting Department Details !"
-					+ e.fillInStackTrace());
+			log.error("findDepartmentById() : Exception Occured while getting Department Details !"
+					+ e.getMessage(),e);
 			throw new ControllerException(ErrorCodeMessages.ERR_DEPT_DETAILS_GET_UNSUCESS_CODE,
 					ErrorCodeMessages.ERR_DEPT_DETAILS_GET_UNSUCESS_MSG);
 		}
@@ -128,20 +132,20 @@ public class DepartmentController {
 
 	@GetMapping("/all")
 	public ResponseEntity<List<Department>> getAllDepartments() {
-		log.info("DepartmentController.getAllDepartments() ENTERED");
-		log.info("DepartmentController.getAllDepartments() is under execution...");
+		log.info("getAllDepartments() ENTERED");
+		log.info("getAllDepartments() is under execution...");
 		List<Department> departmentDbList = departmentService.getAllDepartments();
 		//DepartmentListVO departmentListVO = new DepartmentListVO();
 		if ( departmentDbList.isEmpty() )
 			throw new EmptyListException(ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_CODE,
 					ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_MSG);
 		try {
-			log.info("DepartmentController.getAllDepartments() executed successfully");
+			log.info("getAllDepartments() executed successfully");
 			//departmentListVO.setDepartment(departmentDbList);
 			return new ResponseEntity<>(departmentDbList, HttpStatus.OK);
 		}catch (Exception e) {
-			log.info("DepartmentController.getAllDepartments() : Exception Occured while getting All Department Details !"
-					+ e.fillInStackTrace());
+			log.error("getAllDepartments() : Exception Occured while getting All Department Details !"
+					+ e.getMessage(), e);
 			throw new ControllerException(ErrorCodeMessages.ERR_DEPT_RETRIEVE_ALL_UNSUCESS_CODE,
 					ErrorCodeMessages.ERR_DEPT_RETRIEVE_ALL_UNSUCESS_MSG);
 		}
@@ -149,21 +153,25 @@ public class DepartmentController {
 	
 	@DeleteMapping("/delete/all/{ids}")
 	public ResponseEntity<Boolean> deleteAllDepartmentsByIds(@PathVariable List<Long> ids){
-		log.info("DepartmentController.deleteAllDepartmentsByIds() ENTERED with args: ids");
+		log.info("deleteAllDepartmentsByIds() ENTERED with args: ids");
 		if(ids == null || ids.size() == 0 || ids.equals((null))){
 			throw new EmptyInputException(ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_CODE, 
 					ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_MSG);
 		}
 		try {
-			log.info("DepartmentController.deleteAllDepartmentsByIds() is under execution..");
+			log.info("deleteAllDepartmentsByIds() is under execution..");
 			departmentService.deleteSelectedDepartmentsByIds(ids);
-			log.info("DepartmentController.deleteAllDepartmentsByIds() executed successfully");
+			log.info("deleteAllDepartmentsByIds() executed successfully");
 			return new ResponseEntity<>(true, HttpStatus.OK);
 		}
 		catch (EmptyListException | DepartmentInUsageException businessException) {
+			log.error("deleteAllDepartmentsByIds() : Exception Occured while deleting Department Details !"
+					+ businessException.getMessage(), businessException);
 			throw businessException;
 		} 
 		catch (Exception e) {
+			log.error("deleteAllDepartmentsByIds() : Exception Occured while deleting Department Details !"
+					+ e.getMessage(), e);
 			throw new ControllerException(ErrorCodeMessages.ERR_DEPT_DELETE_UNSUCCESS_CODE,
 					ErrorCodeMessages.ERR_DEPT_DELETE_UNSUCCESS_MSG);
 		}
