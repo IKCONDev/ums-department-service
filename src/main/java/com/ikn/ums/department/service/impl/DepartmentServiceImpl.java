@@ -23,7 +23,7 @@ import com.ikn.ums.department.exception.EntityNotFoundException;
 import com.ikn.ums.department.exception.ErrorCodeMessages;
 import com.ikn.ums.department.repository.DepartmentRepository;
 import com.ikn.ums.department.service.DepartmentService;
-
+import com.ikn.ums.department.utils.DepartmentConstants;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -80,6 +80,42 @@ public class DepartmentServiceImpl implements DepartmentService {
 	}
 	
 	@Override
+	public List<Department> getAllActiveDepartments() {
+		log.info("getAllDepartments() Entered ");
+		List<Department> departmentList = null;
+		log.info("getAllDepartments() is under execution...");
+		//departmentList = departmentRepository.findAll();
+		departmentList = departmentRepository.findAllDepartmentByStatus(DepartmentConstants.isActive);
+		if (departmentList == null || departmentList.isEmpty() || departmentList.size() == 0 )
+			throw new EmptyListException(ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_CODE,
+					ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_MSG);
+		StringBuilder st = new StringBuilder();
+		departmentList.forEach(department ->{
+			st.append(department.getDepartmentHead()+",");
+		});
+		ResponseEntity<List<com.ikn.ums.department.VO.EmployeeVO>> responseEntity = restTemplate.exchange(
+			    "http://UMS-EMPLOYEE-SERVICE/employees/attendees/"+st,
+			    HttpMethod.GET,
+			    null,
+			    new ParameterizedTypeReference<List<com.ikn.ums.department.VO.EmployeeVO>>() {}
+		);
+		List<EmployeeVO> updatedDepartmentList = responseEntity.getBody();
+		List<Department> updatedList = departmentList;
+		updatedDepartmentList.forEach(employee ->{
+			for(int i=0; i<updatedList.size();i++) {
+				Department department = updatedList.get(i);		
+				if((employee.getEmail()).equals(updatedList.get(i).getDepartmentHead())) {
+					updatedList.set(i,department).setDepartmentHead(employee.getFirstName()+" "+employee.getLastName());
+					
+				}
+			}
+			
+		});
+		log.info("getAllDepartments() executed successfully");
+		return updatedList;
+	}
+	
+	@Override
 	public List<Department> getAllDepartments() {
 		log.info("getAllDepartments() Entered ");
 		List<Department> departmentList = null;
@@ -122,7 +158,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 					ErrorCodeMessages.ERR_DEPT_ID_NOT_FOUND_MSG);
 		log.info("deleteDepartment() is under execution...");
 		Optional<Department> optDepartment = departmentRepository.findById(departmentId);
-		if(!optDepartment.isPresent() || optDepartment == null) {
+		if(!optDepartment.isPresent() || optDepartment.get() == null) {
 			throw new EntityNotFoundException(ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_CODE, 
 					ErrorCodeMessages.ERR_DEPT_ENTITY_IS_NULL_MSG);
 		}else {
@@ -131,8 +167,10 @@ public class DepartmentServiceImpl implements DepartmentService {
 			throw new DepartmentInUsageException(ErrorCodeMessages.ERR_DEPT_IS_IN_USAGE_CODE, 
 					ErrorCodeMessages.ERR_DEPT_IS_IN_USAGE_MSG);
 		  }
-		  departmentRepository.deleteById(departmentId);
-		  
+		  //departmentRepository.deleteById(departmentId);
+		  Department dbdept = optDepartment.get();
+		  dbdept.setActive(DepartmentConstants.isInActive);
+		  departmentRepository.save(optDepartment.get());
 	    }
 		log.info("deleteDepartment() executed successfully");
 	}
@@ -184,7 +222,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 						ErrorCodeMessages.ERR_DEPT_IS_IN_USAGE_MSG);
 			}
 		});
-		departmentRepository.deleteAllById(ids);
+		List<Department> deptList = departmentRepository.findAllById(ids);
+		deptList.forEach(dbdept -> {
+			dbdept.setActive(DepartmentConstants.isInActive);
+		});
+		departmentRepository.saveAll(deptList);
+		//departmentRepository.deleteAllById(ids);
 		log.info("deleteSelectedDepartmentsByIds() executed successfully");
 		
 	}

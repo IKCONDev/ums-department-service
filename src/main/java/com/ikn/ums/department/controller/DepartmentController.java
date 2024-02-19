@@ -151,6 +151,27 @@ public class DepartmentController {
 		}
 	}
 	
+	@GetMapping("/all/active")
+	public ResponseEntity<List<Department>> getAllActiveDepartments() {
+		log.info("getAllActiveDepartments() ENTERED");
+		log.info("getAllActiveDepartments() is under execution...");
+		List<Department> departmentDbList = departmentService.getAllActiveDepartments();
+		//DepartmentListVO departmentListVO = new DepartmentListVO();
+		if ( departmentDbList.isEmpty() )
+			throw new EmptyListException(ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_CODE,
+					ErrorCodeMessages.ERR_DEPT_LIST_IS_EMPTY_MSG);
+		try {
+			log.info("getAllActiveDepartments() executed successfully");
+			//departmentListVO.setDepartment(departmentDbList);
+			return new ResponseEntity<>(departmentDbList, HttpStatus.OK);
+		}catch (Exception e) {
+			log.error("getAllActiveDepartments() : Exception Occured while getting All Department Details !"
+					+ e.getMessage(), e);
+			throw new ControllerException(ErrorCodeMessages.ERR_DEPT_RETRIEVE_ALL_UNSUCESS_CODE,
+					ErrorCodeMessages.ERR_DEPT_RETRIEVE_ALL_UNSUCESS_MSG);
+		}
+	}
+	
 	@DeleteMapping("/delete/all/{ids}")
 	public ResponseEntity<Boolean> deleteAllDepartmentsByIds(@PathVariable List<Long> ids){
 		log.info("deleteAllDepartmentsByIds() ENTERED with args: ids");

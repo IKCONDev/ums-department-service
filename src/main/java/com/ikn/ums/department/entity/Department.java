@@ -27,6 +27,7 @@ public class Department {
     private String departmentAddress;
     private String departmentCode;
     private String departmentHead;
+    private String active;
     @Column(name = "createdDateTime")
 	private LocalDateTime createdDateTime;
 	
