@@ -53,7 +53,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 		log.info("saveDepartment() is under execution");
 		//set current date time for newly inserted record
 		department.setCreatedDateTime(LocalDateTime.now());
-		
+		department.setActive(DepartmentConstants.isActive);
 		savedDepartment = departmentRepository.save(department);
 		log.info("saveDepartment() executed successfully");
 		return savedDepartment;
