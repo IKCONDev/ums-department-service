@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.ikn.ums</groupId>
 	<artifactId>ums-department-service</artifactId>
-	<version>ALPHA-0.1</version>
+	<version>ALPHA-0.2</version>
 	<name>ums-department-service</name>
 	<description>UMS Department Service</description>
 	<properties>
