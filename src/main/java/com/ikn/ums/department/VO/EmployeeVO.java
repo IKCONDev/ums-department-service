@@ -37,5 +37,8 @@ public class EmployeeVO {
 		private DepartmentVO department;
 		
 		private String dateOfJoining;
+		
+		private String employeeStatus;
+
 
 }
