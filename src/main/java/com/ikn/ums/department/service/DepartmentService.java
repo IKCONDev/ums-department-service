@@ -13,5 +13,5 @@ public interface DepartmentService {
 	Department updateDepartment(Department department);
 	void deleteSelectedDepartmentsByIds(List<Long> ids);
 	List<Department> getAllActiveDepartments();
-
+	public List<Department> getAssociateDepartments(String emailId);
 }

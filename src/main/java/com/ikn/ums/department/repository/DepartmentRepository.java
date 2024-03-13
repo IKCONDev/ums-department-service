@@ -20,4 +20,7 @@ public interface DepartmentRepository extends JpaRepository<Department, Long> {
     @Query("FROM Department WHERE active=:status")
     List<Department> findAllDepartmentByStatus(String status);
     
+    @Query("FROM Department WHERE active=Active AND departmentHead=:emailId")
+	List<Department> getDepartmentBydepartmentHead(String emailId);
+    
 }

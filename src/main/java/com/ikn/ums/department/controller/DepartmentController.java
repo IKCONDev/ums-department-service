@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ikn.ums.department.VO.DepartmentListVO;
+import com.ikn.ums.department.VO.DepartmentVO;
 import com.ikn.ums.department.entity.Department;
 import com.ikn.ums.department.exception.ControllerException;
 import com.ikn.ums.department.exception.DepartmentInUsageException;
@@ -197,5 +198,23 @@ public class DepartmentController {
 					ErrorCodeMessages.ERR_DEPT_DELETE_UNSUCCESS_MSG);
 		}
 	}
-
+	
+	@GetMapping("/AssociateDepartment/{emailId}")
+	public ResponseEntity<List<Department>> getDepartmentByDepartmentHead(@PathVariable String emailId) {
+		log.info("entered  getDepartmentByDepartmentHead() ");
+		if(emailId==null) {
+			throw new EmptyInputException(ErrorCodeMessages.ERR_DEPT_EMAIL_ID_NOT_FOUND_CODE, 
+					ErrorCodeMessages.ERR_DEPT_EMAIL_ID_NOT_FOUND_MSG);
+		}
+		try {
+		List<Department> departmentList = departmentService.getAssociateDepartments(emailId);
+		return new ResponseEntity<>(departmentList, HttpStatus.OK);
+		}catch (Exception e) {
+			log.error("getDepartmentByDepartmentHead() : Exception Occured while getting All AssociateDepartment Details !"
+					+ e.getMessage(), e);
+			throw new ControllerException(ErrorCodeMessages.ERR_DEPT_RETRIEVE_ASSOCIATE_DEPT_UNSUCESS_CODE,
+					ErrorCodeMessages.ERR_DEPT_RETRIEVE_ASSOCIATE_DEPT_UNSUCESS_MSG);
+		}
+	}
+	
 }

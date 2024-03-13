@@ -251,4 +251,14 @@ public class DepartmentServiceImpl implements DepartmentService {
 		return isDeptNameExists;
 	}
 
+	public List<Department> getAssociateDepartments(String emailId) {
+		log.info("getAssociateDepartments() ENTERED :emailId" );
+		if(emailId==null) {
+			throw new EmptyInputException(ErrorCodeMessages.ERR_DEPT_EMAIL_ID_NOT_FOUND_CODE, 
+					ErrorCodeMessages.ERR_DEPT_EMAIL_ID_NOT_FOUND_MSG);
+		}
+		List<Department> DepartmentList= departmentRepository.getDepartmentBydepartmentHead(emailId);
+		return DepartmentList;
+	}
+
 }

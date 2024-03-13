@@ -46,5 +46,11 @@ public class ErrorCodeMessages {
 	 
 	 public static final String ERR_DEPT_IS_IN_USAGE_CODE = "ERR_DEPT_IS_IN_USAGE_CODE - 1016";
 	 public static final String ERR_DEPT_IS_IN_USAGE_MSG = "Department is in Usage";
+	 
+	 public static final String ERR_DEPT_EMAIL_ID_NOT_FOUND_CODE ="ERR_DEPT_IS_IN_USAGE_CODE - 1017";
+	 public static final String ERR_DEPT_EMAIL_ID_NOT_FOUND_MSG ="email is Empty";
+	 
+	 public static final String ERR_DEPT_RETRIEVE_ASSOCIATE_DEPT_UNSUCESS_CODE = "ERR_DEPT_RETRIEVE_ASSOCIATE_DEPT_UNSUCESS_CODE - 1018";
+	 public static final String ERR_DEPT_RETRIEVE_ASSOCIATE_DEPT_UNSUCESS_MSG = "Error While Fetching Departments of Department Head";
 
 }
